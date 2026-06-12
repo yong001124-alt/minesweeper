@@ -1406,7 +1406,8 @@ export default function Minesweeper(){
       <div style={{position:"absolute",inset:0,zIndex:0,pointerEvents:"none",
         background:"radial-gradient(ellipse 100% 45% at 50% 0%,rgba(168,212,230,.35) 0%,transparent 65%),radial-gradient(ellipse 70% 35% at 0% 100%,rgba(141,200,122,.15) 0%,transparent 60%),radial-gradient(ellipse 50% 30% at 100% 80%,rgba(242,167,187,.12) 0%,transparent 60%)",
         backgroundSize:"200% 200%",animation:"aurora 12s ease infinite"}}/>
-      <canvas ref={canvasRef} style={{position:"fixed",inset:0,zIndex:40,pointerEvents:"none"}}/>
+      {/* 粒子画布：需在通关 Splash(z60) 之上让烟花环绕卡片，在升级仪式幕布(z65) 之下被聚焦暗幕压住 */}
+      <canvas ref={canvasRef} style={{position:"fixed",inset:0,zIndex:62,pointerEvents:"none"}}/>
 
       {/* ── 升级仪式（验收稿 ④：暗色幕布 + 勋章放大 + 爪印粒子环绕）── */}
       {showRankUp!==null&&(
@@ -1495,10 +1496,12 @@ export default function Minesweeper(){
       )}
 
       {/* ── LEVEL-UP SPLASH ── */}
-      {showLevelUp&&(
+      {showLevelUp&&(<>
+        {/* 蒙版层(z60) < 粒子画布(z62) < 卡片层(z63)：烟花在蒙版上环绕卡片、不遮挡文字 */}
         <div style={{position:"absolute",inset:0,zIndex:60,
-          display:"flex",alignItems:"center",justifyContent:"center",
-          background:"rgba(253,246,236,.88)",backdropFilter:"blur(10px)",pointerEvents:"none"}}>
+          background:"rgba(253,246,236,.88)",backdropFilter:"blur(10px)",pointerEvents:"none"}}/>
+        <div style={{position:"absolute",inset:0,zIndex:63,
+          display:"flex",alignItems:"center",justifyContent:"center",pointerEvents:"none"}}>
           <div style={{textAlign:"center",animation:"levelUpIn .5s cubic-bezier(.34,1.56,.64,1) both",
             padding:"32px 40px",borderRadius:28,maxWidth:300,
             background:"#FFFBF4",
@@ -1537,7 +1540,7 @@ export default function Minesweeper(){
             )}
           </div>
         </div>
-      )}
+      </>)}
 
       {/* ══════════════════════════════════════════════════════
           INTRO — 4 幕故事动画（首次进入 / 重看故事）

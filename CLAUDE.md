@@ -124,6 +124,7 @@ phase = "game"     → 正式游戏关卡
 
 > dev 调试 URL 参数（仅开发用）：`?phase=select|game|tutorial|intro|home`、`&best=N`（模拟前 N 关已通关）、`&lv=N`、`&tut=N`、`&scene=N`（intro 幕）、`&rankup=N`、`&medals=1`、`&noanim=1`（关动画，截图用）。
 > 本机无头截图：Edge headless 视口固定 470px 宽，用 `--window-size=470,705` 截全视口。
+> 通关链路回归：`npm i --no-save puppeteer-core && node scripts/e2e-win.mjs`——自动打满第 1 关（从 React fiber 读雷位），验证通关 Splash → 自动进下一关无崩溃，并输出 Splash 瞬间截图 `scripts/_e2e_splash.png` 供视觉检查（烟花/蒙版/卡片层级）。涉及通关流程、覆盖层、粒子的改动必须跑一遍。
 - 首次启动 → `intro` 故事动画 → 教学（可跳过）；非首次 → `home`
 - 教学完成后 → 自动进入 `select`（关卡地图）
 - 关卡地图 → 只能点击「当前关卡」或已通关关卡，未解锁节点不可点（v2：不可跳关）
@@ -189,6 +190,21 @@ cs = Math.max(18, Math.min(56, Math.min(byW, byH)));
 - 棋盘本身：`width: boardW(cs*cols), height: boardH(cs*rows), flexShrink:0`
 - 每行：`display:flex, flex:1`
 - 每格：`flex:1`，不要用固定 `width:cs height:cs`
+
+### 覆盖层 z-index 阶梯（新增覆盖层前必读）
+
+```
+z10  顶栏 / 底栏 / 首页 / 关卡地图
+z20  intro 故事动画 / 教学提示框 / 地图未解锁 toast
+z30  失败重试 overlay（需被粒子盖住：便便粒子/臭气在其上）
+z60  通关 Splash 蒙版（rgba 奶白 + blur）
+z62  粒子 canvas（fixed 全窗）—— 在 Splash 蒙版之上让烟花环绕卡片
+z63  通关 Splash 卡片 —— 在粒子之上，烟花永不遮挡文字
+z65  升级仪式暗幕（自带 CSS 爪印粒子，不走 canvas；暗幕压住残余烟花=聚焦仪式）
+z70  勋章墙
+```
+新增覆盖层时必须先决定它与粒子画布(z62)的上下关系：要粒子环绕 → 放 z62 以下；要纯净聚焦 → 放 z62 以上。
+通关 Splash 是「蒙版 + 卡片」拆开的两层兄弟节点（z60/z63），不要合并回单层（会把烟花挡在蒙版后或压到文字上）。
 
 ### CSS 全局（index.css 必须有）
 ```css
