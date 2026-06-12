@@ -201,6 +201,14 @@ const SPR={
     "kcck.kcccccccck.kcck","kcck.kcccccccck.kcck",".kk..kccoccocck..kk.",".....kcccccccck.....",
     ".....kcccccccck.....",".....kkkkkkkkkk.....","......kk....kk......","....................",
   ],
+  // 开心眯眼（通关：^_^ 眼 + 腮红 + 摇尾巴）
+  catHappy:[
+    "....kk........kk....","...kcck......kcck.p.","...kcpck....kcpck...","p.kkccckkkkkkccckk..",
+    "..kcccccccccccccck..","..kceecccccccceeck..","..kppcccccccccppck..","k.kccccccppcccccck.k",
+    "..kcccccekkeccccck..","...kcccccccccccck...","...kcccccccccccck...","...kccocccccoccck...",
+    "...kcccccccccccck...","...kcccccccccccck...","...kcccccccccccck.k.","...kcccccccccccckok.",
+    "...kcwccccccwccck.k.","...kcccccccccccck...","....kckkkkkkkkck....",".....kk......kk.....",
+  ],
   poop:[
     "........",".....B..","....BB..","..BBBB..",".BmBBBB.",".BBBBmB.","BBBBBBBB","........",
   ],
