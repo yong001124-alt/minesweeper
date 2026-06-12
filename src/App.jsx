@@ -2297,7 +2297,10 @@ export default function Minesweeper(){
             boxShadow:"0 4px 20px rgba(139,99,85,.12)",
             display:"flex",alignItems:"flex-start",gap:10,
           }}>
-            <span style={{fontSize:16,lineHeight:1.6,flexShrink:0}}>🐱</span>
+            <div style={{flexShrink:0,display:"flex",flexDirection:"column",alignItems:"center",gap:2,marginTop:2}}>
+              <Sprite map={SPR.catSit} scale={1.7}/>
+              <span style={{fontSize:8,color:"#C9A96E",letterSpacing:1}}>咪咪</span>
+            </div>
             <div style={{
               flex:1,color:"#8B6355",fontSize:12,lineHeight:1.75,
               letterSpacing:.3,whiteSpace:"pre-line",

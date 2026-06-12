@@ -25,3 +25,9 @@ dist-ssr
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# 本地风格参考图（Neko Station Steam 截图，版权素材不入库）
+ss_*.jpg
+# 临时验证截图
+_verify_*.png
+screenshot*.png
