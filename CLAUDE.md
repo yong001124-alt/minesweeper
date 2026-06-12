@@ -265,7 +265,6 @@ touchAction: (gs==="won" || gs==="lost") ? "auto" : "none"
   插旗/取消：可爱「叮」声（playFlag，正弦钟声 880Hz + 八度泛音）/ playUnflag
   通关：小猫「喵～」+ C大调五声音阶（playLevelUp）
   其他：playClick / playCombo / playTick（计时滴答）
-  ⚠️ playAfterShock 仍在导出列表中但已无调用（被 playMeow("shock") 取代），勿当作活跃 API
 
 猫咪叫声 —— playMeow(type)，真实素材优先、合成兜底：
   素材：public/sounds/ 7 个 mp3（Mixkit License，免署名可用于游戏），
@@ -387,7 +386,7 @@ TUTORIALS = [TUT0, TUT1, TUT2]
 ### P3 — 音效与角色
 - [x] 沙沙声（铲砂 playReveal/playCascade — 白噪声 + 带通滤波）
 - [x] 「噗」声（踩到便便 playExplosion — 低频振荡器下滑 + 方波溅射）
-- [x] 猫咪惊叫（现由 `playMeow("shock")` 承担；原 playAfterShock 合成版已无调用）
+- [x] 猫咪惊叫（由 `playMeow("shock")` 承担；原 playAfterShock 合成版已删除）
 - [x] 猫咪嘶叫（playRumble — 锯齿波 + 高通噪声）
 - [x] 叮声（插旗 playFlag — 正弦钟声 880Hz + 八度泛音）
 - [x] 「喵～」+ 五声音阶（通关 playLevelUp — 三角波 meow + C大调五声）

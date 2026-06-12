@@ -570,21 +570,6 @@ function createAudio(){
     e.gain.setValueAtTime(.7,t);e.gain.exponentialRampToValueAtTime(.001,t+.38);
     ns.start(t);ns.stop(t+.42);
   }
-  // 猫咪惊叫 — cat yowl (scared meow)
-  function playAfterShock(){
-    const t=ctx.currentTime;
-    const vib=ctx.createOscillator(),vg=ctx.createGain();
-    vib.type="sine";vib.frequency.value=9;vib.connect(vg);vg.gain.value=25;
-    const o=ctx.createOscillator(),e=ctx.createGain();
-    vg.connect(o.frequency);o.connect(e);e.connect(G(.3));o.type="triangle";
-    // meow contour: rises then falls (scared)
-    o.frequency.setValueAtTime(320,t);
-    o.frequency.exponentialRampToValueAtTime(680,t+.14);
-    o.frequency.exponentialRampToValueAtTime(210,t+.75);
-    e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(.55,t+.05);
-    e.gain.setValueAtTime(.55,t+.18);e.gain.exponentialRampToValueAtTime(.001,t+.85);
-    vib.start(t);vib.stop(t+.9);o.start(t);o.stop(t+.9);
-  }
   // 猫咪嘶嘶 — cat hiss (still upset)
   function playRumble(){
     const t=ctx.currentTime;
@@ -731,7 +716,7 @@ function createAudio(){
   }
 
   return{playClick,playReveal,playCascade,playFlag,playUnflag,
-         playExplosion,playAfterShock,playRumble,playLevelUp,playCombo,playTick,playMeow,
+         playExplosion,playRumble,playLevelUp,playCombo,playTick,playMeow,
          resume:()=>ctx.resume()};
 }
 
