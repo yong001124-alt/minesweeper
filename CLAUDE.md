@@ -18,8 +18,8 @@
 
 > **素材验收稿**：项目根目录 `asset-preview.html` + `asset-sprites.js`（浏览器直接打开）。已与用户多轮确认：猫咪四态像素画、Key Art（六层景深）、4幕故事动画（与 Key Art 同风格）、6 枚如厕主题勋章、5 场景造型外框、排雷交互动画、关卡地图设计稿。**实现时以验收稿的视觉效果为准**，像素画数据可直接从 asset-sprites.js 移植。
 
-单文件 React 游戏，约 1200 行，文件路径 `src/App.jsx`。  
-手机优先设计，无外部依赖（音效用 Web Audio API 合成，粒子用 Canvas 绘制）。
+单文件 React 游戏，约 2260 行，文件路径 `src/App.jsx`。  
+手机优先设计，无外部 npm 依赖（操作音效用 Web Audio API 合成；猫叫声用 `public/sounds/` 下 7 个 Mixkit mp3 素材，经 Web Audio 解码播放、加载失败自动回退合成喵；粒子用 Canvas 绘制）。
 
 **技术栈**：React + Vite，无其他 npm 包依赖。
 
@@ -256,21 +256,29 @@ touchAction: (gs==="won" || gs==="lost") ? "auto" : "none"
 - 替换颜色：`#6B3F2A`（便便棕）为主，去掉黑色烟雾
 - 音效：滑稽「噗」声取代爆炸音
 
-### 音效（Web Audio API，无外部文件）
+### 音效（操作音效 Web Audio 合成 + 猫叫声 mp3 素材）
 ```
-当前：
-  踩雷三阶段音效（共5秒）：冲击+余震+哀鸣
-  揭格：轻微三角波，音调随数字1-8递升
-  大片揭开：锯齿波扫频上升
-  插旗：低频撞击+高频ping叠加
-  通关：C大调六音琶音+和弦延音
+操作音效 —— Web Audio API 实时合成，无外部文件：
+  铲开砂子：沙沙声（白噪声 + 带通滤波），playReveal 音调随数字 1-8 递升，大片揭开 playCascade
+  踩到便便：滑稽「噗」声（playExplosion，低频振荡器下滑 + 方波溅射）
+  猫咪嘶叫：playRumble（锯齿波 + 高通噪声，踩雷后 1100ms）
+  插旗/取消：可爱「叮」声（playFlag，正弦钟声 880Hz + 八度泛音）/ playUnflag
+  通关：小猫「喵～」+ C大调五声音阶（playLevelUp）
+  其他：playClick / playCombo / playTick（计时滴答）
+  ⚠️ playAfterShock 仍在导出列表中但已无调用（被 playMeow("shock") 取代），勿当作活跃 API
 
-目标改造（见 DESIGN.md 第七节）：
-  踩到便便：滑稽「噗」声 + 猫咪惊叫（合成）
-  铲开砂子：沙沙声（白噪声短促滤波）
-  插旗/标记：可爱「叮」声
-  通关：小猫咪「喵～」+ 轻快上行音阶
-  里程碑：渐进式 purring（呼噜声）
+猫咪叫声 —— playMeow(type)，真实素材优先、合成兜底：
+  素材：public/sounds/ 7 个 mp3（Mixkit License，免署名可用于游戏），
+        音频初始化时 fetch + decodeAudioData 预载为 AudioBuffer（meowBufs）
+  播放：BufferSource 输出，每类型独立音量/变速见 MEOW_PLAY 表；
+        某文件加载失败时该类型自动回退三角波合成喵（MEOWS 音高曲线表，基频滑音 + vibrato + 短包络）
+  类型：enter（进关元气短喵）/ cascade（连开≥12格兴奋喵，延迟280ms）/ milestone（里程碑满足呼噜）/
+        shock（踩屎惊叫）/ whine（踩屎哀怨长喵）/ rankup（颁章庄重喵 + 钟声泛音，素材/合成两路径都叠）/
+        retry（重试振作短哼）
+  约束：叫声音量 ≤ 操作音效；同一时刻只播一个喵声（meowStop 打断机制，后到打断先到）
+
+踩到便便完整时序：
+  playExplosion(0ms) → playMeow("shock")(550ms) → playRumble(1100ms) → playMeow("whine")(1750ms)
 ```
 
 ### 涟漪动画
@@ -379,7 +387,7 @@ TUTORIALS = [TUT0, TUT1, TUT2]
 ### P3 — 音效与角色
 - [x] 沙沙声（铲砂 playReveal/playCascade — 白噪声 + 带通滤波）
 - [x] 「噗」声（踩到便便 playExplosion — 低频振荡器下滑 + 方波溅射）
-- [x] 猫咪惊叫（playAfterShock — 三角波 vibrato 上升/下落曲线）
+- [x] 猫咪惊叫（现由 `playMeow("shock")` 承担；原 playAfterShock 合成版已无调用）
 - [x] 猫咪嘶叫（playRumble — 锯齿波 + 高通噪声）
 - [x] 叮声（插旗 playFlag — 正弦钟声 880Hz + 八度泛音）
 - [x] 「喵～」+ 五声音阶（通关 playLevelUp — 三角波 meow + C大调五声）
@@ -407,8 +415,8 @@ TUTORIALS = [TUT0, TUT1, TUT2]
 - [x] 勋章墙：首页/地图顶栏入口，未获得显示剪影 + 解锁条件，进度存 localStorage
 
 ### P3 — 猫咪叫声体系（音效补充，详见 DESIGN.md 10.3）
-- [x] 统一 `playMeow(type)` 合成函数：三角波基频滑音 + vibrato + 短包络（参考现有 playLevelUp 的 meow 手法），按类型查表取音高曲线/时长
-- [x] 叫声类型：进入关卡（元气短喵 600→900Hz/0.25s）、大片连开（双音节兴奋喵）、里程碑（满足喵叠呼噜）、踩到便便（哀怨长喵 0.8s 下行颤音，叠在惊叫后）、升级颁章（庄重长喵+钟声）、重试（振作短哼）
+- [x] 统一 `playMeow(type)`：**真实猫叫素材优先**（`public/sounds/` 7 个 Mixkit mp3，预载为 AudioBuffer，按 `MEOW_PLAY` 表取音量/变速），加载失败回退合成喵（三角波基频滑音 + vibrato + 短包络，`MEOWS` 音高曲线表）
+- [x] 叫声类型：进入关卡（元气短喵）、大片连开（兴奋喵）、里程碑（满足呼噜）、踩到便便（惊叫 + 哀怨长喵，叠在「噗」声后）、升级颁章（庄重长喵+钟声泛音）、重试（振作短哼）——括号内描述以 mp3 素材为准，合成兜底曲线参数见 `MEOWS` 表
 - [x] 约束：叫声音量 ≤ 操作音效；同一时刻只播一个喵声（后到打断先到）
 
 ---
