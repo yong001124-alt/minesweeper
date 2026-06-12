@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猫咪如厕大冒险 · 素材预览（验收稿 v2）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #FDF6EC; color:#8B6355;
+    padding: 20px 14px 60px; max-width: 780px; margin: 0 auto;
+  }
+  h1 { font-size: 22px; color:#6B4226; text-align:center; margin-bottom:6px; }
+  .note { text-align:center; font-size:13px; color:#A08770; margin-bottom:24px; line-height:1.6; }
+  section {
+    background:#FFFDF8; border:2px solid #EAD9BC; border-radius:16px;
+    padding:18px 16px 22px; margin-bottom:26px;
+    box-shadow: 0 3px 0 #EAD9BC;
+  }
+  h2 { font-size:17px; color:#6B4226; margin-bottom:4px; }
+  .sub { font-size:12px; color:#A08770; margin-bottom:14px; line-height:1.7; }
+  .tag { display:inline-block; background:#F2A7BB; color:#fff; font-size:11px;
+    border-radius:8px; padding:1px 8px; margin-left:6px; vertical-align:2px; }
+  .row { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; align-items:flex-end; }
+  .cell-item { text-align:center; }
+  .cell-item .cap { font-size:12px; margin-top:6px; color:#8B6355; }
+  .demo-btn {
+    background:#E8855A; color:#fff; border:none; border-radius:14px;
+    padding:7px 18px; font-size:13px; font-weight:700; cursor:pointer; margin:0 4px;
+    box-shadow: 0 3px 0 #C56A44;
+  }
+  .demo-btn.pink { background:#F2A7BB; box-shadow:0 3px 0 #D98AA0; }
+  .demo-btn.on { background:#8DC87A; box-shadow:0 3px 0 #6FA85F; }
+
+  /* ════════ ② 主视觉 Key Art（深化版）════════ */
+  .keyart {
+    position:relative; width:340px; height:480px; margin:0 auto;
+    border-radius:18px; overflow:hidden; border:3px solid #8B6355;
+    background: linear-gradient(#9FD0E8 0%, #BCE0EF 36%, #DCEFF0 52%, #CFE8C2 60%, #BFDFA8 66%, #E9D5A4 72%, #C9A96E 100%);
+  }
+  .sun { position:absolute; top:24px; right:28px; width:42px; height:42px; background:#FFE9A8; border:3px solid #F2C14E;
+    box-shadow: 0 0 0 7px rgba(255,233,168,.4), 0 0 34px 16px rgba(255,233,168,.55);
+    animation: sunpulse 4s ease-in-out infinite; }
+  @keyframes sunpulse { 50% { box-shadow: 0 0 0 10px rgba(255,233,168,.5), 0 0 40px 20px rgba(255,233,168,.65); } }
+  .cloud { position:absolute; background:#fff; opacity:.95; height:16px; width:64px; border-radius:3px; }
+  .cloud::before { content:""; position:absolute; background:#fff; width:30px; height:14px; top:-11px; left:14px; border-radius:3px; }
+  .cloud::after  { content:""; position:absolute; background:#fff; width:18px; height:9px;  top:-7px;  left:42px; border-radius:3px; }
+  .cloud.c1 { top:58px; left:22px; animation: drift 9s linear infinite alternate; }
+  .cloud.c2 { top:104px; right:50px; transform:scale(.66); animation: drift 12s linear infinite alternate-reverse; }
+  .cloud.c3 { top:30px; left:140px; transform:scale(.45); opacity:.8; animation: drift 14s linear infinite alternate; }
+  @keyframes drift { to { transform: translateX(26px); } }
+  .bird { position:absolute; font-size:11px; opacity:.75; animation: fly 13s linear infinite; }
+  .bird.b1 { top:86px; left:-18px; }
+  .bird.b2 { top:64px; left:-50px; animation-delay:1.2s; font-size:9px; }
+  @keyframes fly { to { transform: translateX(420px) translateY(-14px); } }
+  .hill { position:absolute; top:236px; left:-70px; width:480px; height:130px; background:#AFD592; border-radius:50%; }
+  .hill.h2 { left:120px; top:252px; width:420px; background:#9ECB81; }
+  .fence { position:absolute; top:268px; left:0; right:0; height:26px;
+    background: repeating-linear-gradient(90deg, #FFF6E4 0 7px, transparent 7px 24px); opacity:.9; }
+  .fence::after { content:""; position:absolute; top:7px; left:0; right:0; height:4px; background:#F4E7CC; }
+  .flower { position:absolute; font-size:13px; }
+  .butterfly { position:absolute; top:240px; left:60px; font-size:14px; animation: flutter 7s ease-in-out infinite alternate; }
+  @keyframes flutter { 30% { transform: translate(60px,-22px) rotate(12deg);} 70% { transform: translate(140px,-6px) rotate(-10deg);} 100% { transform: translate(200px,-30px);} }
+  .ka-sign {
+    position:absolute; top:128px; left:50%; transform:translateX(-50%) rotate(-1.5deg);
+    background: linear-gradient(#C89B6A,#B98955); border:3px solid #8B6355; border-radius:10px;
+    padding:10px 20px 8px; text-align:center; box-shadow: 0 4px 0 rgba(107,66,38,.4);
+  }
+  .ka-sign::before, .ka-sign::after { content:""; position:absolute; top:6px; width:6px; height:6px;
+    background:#6B4226; border-radius:50%; }
+  .ka-sign::before { left:8px; } .ka-sign::after { right:8px; }
+  .ka-title { font-size:27px; font-weight:900; color:#FFF;
+    text-shadow: 2px 2px 0 #E8855A, 4px 4px 0 #6B4226; letter-spacing:2px; white-space:nowrap; }
+  .ka-ribbon { position:absolute; top:196px; left:50%; transform:translateX(-50%);
+    background:#F2A7BB; color:#fff; font-size:12px; letter-spacing:4px;
+    padding:3px 18px; border-radius:12px; box-shadow:0 2px 0 #D98AA0; white-space:nowrap; }
+  .shadow { position:absolute; background:rgba(90,60,30,.18); border-radius:50%; filter:blur(1px); }
+  .ka-cat  { position:absolute; bottom:74px; left:26px; animation: bob 1.4s ease-in-out infinite; z-index:3; }
+  .ka-box  { position:absolute; bottom:66px; right:20px; z-index:3; }
+  .ka-pawtrail span { position:absolute; font-size:12px; opacity:.55; transform:rotate(90deg); z-index:2; }
+  .ka-poop1{ position:absolute; bottom:168px; right:52px; font-size:20px; animation: floaty 2.6s ease-in-out infinite; z-index:4; }
+  .ka-q1   { position:absolute; bottom:190px; right:106px; font-size:19px; color:#E8855A; font-weight:900;
+    animation: floaty 2.2s .4s ease-in-out infinite; text-shadow:1px 1px 0 #fff; z-index:4; }
+  .ka-q2   { position:absolute; bottom:214px; right:66px; font-size:14px; color:#F2A7BB; font-weight:900;
+    animation: floaty 3s .8s ease-in-out infinite; text-shadow:1px 1px 0 #fff; z-index:4; }
+  .ka-spark{ position:absolute; font-size:15px; animation: floaty 2.8s .2s ease-in-out infinite; z-index:4; }
+  @keyframes bob    { 50% { transform: translateY(-6px); } }
+  @keyframes floaty { 50% { transform: translateY(-8px); opacity:.72; } }
+  .ka-ground { position:absolute; bottom:0; left:0; right:0; height:64px;
+    background:
+      radial-gradient(circle at 12% 30%, #DDC592 0 2px, transparent 3px),
+      radial-gradient(circle at 38% 60%, #B8935A 0 2px, transparent 3px),
+      radial-gradient(circle at 64% 26%, #DDC592 0 2px, transparent 3px),
+      radial-gradient(circle at 86% 58%, #B8935A 0 2px, transparent 3px),
+      linear-gradient(#D9BC85, #C9A96E);
+    background-size: 56px 40px, 56px 40px, 56px 40px, 56px 40px, 100% 100%;
+  }
+  .ka-btn {
+    position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
+    background:#F2A7BB; color:#fff; font-size:15px; font-weight:700;
+    border:none; border-radius:22px; padding:9px 34px; z-index:5;
+    box-shadow: 0 4px 0 #D98AA0; letter-spacing:2px; animation: btnbreath 2s ease-in-out infinite; }
+  @keyframes btnbreath { 50% { transform:translateX(-50%) scale(1.05); } }
+
+  /* ════════ ③ 故事动画 ════════ */
+  .stage {
+    position:relative; width:340px; height:430px; margin:0 auto;
+    border-radius:18px; overflow:hidden; border:3px solid #8B6355; background:#FDF6EC;
+  }
+  .scene { position:absolute; inset:0; opacity:0; transition: opacity .7s; pointer-events:none; }
+  .scene.active { opacity:1; }
+  /* 字幕牌：与 Key Art 木质招牌同款 */
+  .scene .cap {
+    position:absolute; bottom:14px; left:18px; right:18px; text-align:center;
+    background: linear-gradient(#C89B6A,#B98955); border:3px solid #8B6355; border-radius:10px;
+    padding:10px 12px; font-size:14px; line-height:1.7; color:#fff;
+    text-shadow: 1px 1px 0 rgba(107,66,38,.65); box-shadow: 0 3px 0 rgba(107,66,38,.4);
+  }
+  .scene .cap::before, .scene .cap::after { content:""; position:absolute; top:6px; width:6px; height:6px;
+    background:#6B4226; border-radius:50%; }
+  .scene .cap::before { left:8px; } .scene .cap::after { right:8px; }
+  /* Key Art 同款元素：窗户 / 地面 / 投影 / 星月 */
+  .swin { position:absolute; width:74px; height:62px; border:5px solid #8B6355;
+    background: linear-gradient(#A8D4E6,#CBE6F2); }
+  .swin::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:4px; background:#8B6355; transform:translateX(-50%); }
+  .swin::after { content:""; position:absolute; top:50%; left:0; right:0; height:4px; background:#8B6355; transform:translateY(-50%); }
+  .swin .scloud { position:absolute; top:8px; left:7px; width:24px; height:7px; background:#fff; border-radius:2px; opacity:.9; }
+  .sandband { position:absolute; bottom:0; left:0; right:0; height:78px;
+    background:
+      radial-gradient(circle at 12% 30%, #DDC592 0 2px, transparent 3px),
+      radial-gradient(circle at 38% 60%, #B8935A 0 2px, transparent 3px),
+      radial-gradient(circle at 64% 26%, #DDC592 0 2px, transparent 3px),
+      radial-gradient(circle at 86% 58%, #B8935A 0 2px, transparent 3px),
+      linear-gradient(#D9BC85, #C9A96E);
+    background-size: 56px 40px, 56px 40px, 56px 40px, 56px 40px, 100% 100%;
+  }
+  .woodband { position:absolute; bottom:0; left:0; right:0; height:78px;
+    background: repeating-linear-gradient(0deg, #5A4634 0 13px, #4E3C2C 13px 26px); }
+  .sshadow { position:absolute; background:rgba(40,25,12,.25); border-radius:50%; filter:blur(1px); }
+  .sshadow.day { background:rgba(90,60,30,.18); }
+  .star { position:absolute; color:#FFE9A8; font-size:10px; animation: twinkle 1.8s ease-in-out infinite; }
+  @keyframes twinkle { 50% { opacity:.25; } }
+  .moon { position:absolute; top:26px; left:30px; width:34px; height:34px; border-radius:50%;
+    background:#F4EDD8; box-shadow: inset -7px -5px 0 #D8CFB4, 0 0 18px 5px rgba(244,237,216,.3); }
+  .s1 { background: linear-gradient(#3A3550, #5A4F6E 70%, #2E2A3E 100%); }
+  .s1 .window { position:absolute; top:46px; left:50%; transform:translateX(-50%);
+    width:120px; height:120px; background:#FFE9A8;
+    box-shadow: 0 0 36px 10px rgba(255,233,168,.35); border:6px solid #1C1830; }
+  .s1 .window::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:6px; background:#1C1830; transform:translateX(-50%); }
+  .s1 .window::after  { content:""; position:absolute; top:50%; left:0; right:0; height:6px; background:#1C1830; transform:translateY(-50%); }
+  .s1 .sil { position:absolute; bottom:96px; left:50%; transform:translateX(-50%); }
+  .s2 { background: linear-gradient(#FDF6EC, #F4E3C8); }
+  .s2 .bigbox { position:absolute; bottom:120px; left:50%; transform:translateX(-50%); }
+  .s2 .pp { position:absolute; transform:scale(0); animation: pop .5s forwards; }
+  .s2.active .pp1 { animation-delay:.5s; }
+  .s2.active .pp2 { animation-delay:1.1s; }
+  .s2.active .pp3 { animation-delay:1.7s; }
+  .s2 .bang { position:absolute; top:60px; right:60px; font-size:30px; opacity:0; }
+  .s2.active .bang { animation: pop .4s 2.1s forwards; }
+  @keyframes pop { 60% { transform:scale(1.25); opacity:1; } 100% { transform:scale(1); opacity:1; } }
+  .s3 { background: linear-gradient(#FBEEDD, #F6DFC4); }
+  .s3 .shaker { position:absolute; top:90px; left:50%; margin-left:-64px; animation: shake .18s linear infinite; }
+  .s3 .sweat { position:absolute; top:80px; left:50%; margin-left:54px; font-size:24px; animation: floaty 1s ease-in-out infinite; }
+  .s3 .squeeze { position:absolute; top:200px; left:50%; margin-left:-110px; font-size:22px; animation: floaty 1.3s ease-in-out infinite; }
+  @keyframes shake { 25% { transform:translateX(-4px) rotate(-2deg);} 75% { transform:translateX(4px) rotate(2deg);} }
+  .s4 { background: linear-gradient(#FDF6EC 55%, #E6CF9F 56%, #C9A96E); }
+  .s4 .walker { position:absolute; bottom:160px; left:16px; animation: creep 3.4s ease-in-out infinite; }
+  @keyframes creep { 0%{transform:translateX(0)} 50%{transform:translateX(120px) translateY(-3px)} 100%{transform:translateX(120px)} }
+  .s4 .targetbox { position:absolute; bottom:150px; right:14px; }
+  .s4 .q { position:absolute; font-weight:900; font-size:20px; color:#E8855A; text-shadow:1px 1px 0 #fff; animation: blinkq 1.2s infinite; }
+  .s4 .q1 { bottom:230px; right:60px; }
+  .s4 .q2 { bottom:256px; right:110px; animation-delay:.5s; color:#F2A7BB; }
+  @keyframes blinkq { 50% { opacity:.15; } }
+  .controls { text-align:center; margin-top:12px; }
+  .dots { text-align:center; margin-top:10px; }
+  .dots i { display:inline-block; width:8px; height:8px; border-radius:50%; background:#EAD9BC; margin:0 4px; }
+  .dots i.on { background:#E8855A; }
+
+  /* ════════ ④ 勋章 ════════ */
+  .medal {
+    width:76px; height:76px; margin:0 auto;
+    display:flex; align-items:center; justify-content:center;
+    border:3px solid #5C4033; position:relative; cursor:pointer;
+    clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,.35), inset -3px -3px 0 rgba(0,0,0,.15);
+  }
+  .medal.final { border-color:#B8860B;
+    box-shadow: inset 3px 3px 0 rgba(255,255,255,.5), inset -3px -3px 0 rgba(0,0,0,.15), 0 0 14px 3px rgba(242,193,78,.6);
+    animation: shine 2.2s ease-in-out infinite; }
+  @keyframes shine { 50% { box-shadow: inset 3px 3px 0 rgba(255,255,255,.5), inset -3px -3px 0 rgba(0,0,0,.15), 0 0 22px 7px rgba(242,193,78,.85); } }
+  .medal.locked { filter: grayscale(1) brightness(.85); opacity:.55; cursor:default; }
+  .medal.locked::after { content:"🔒"; position:absolute; font-size:22px; }
+  .m-name { font-size:13px; font-weight:700; color:#6B4226; margin-top:8px; }
+  .m-cond { font-size:11px; color:#A08770; }
+  .overlay {
+    position:fixed; inset:0; background:rgba(60,42,30,.78); z-index:50;
+    display:none; align-items:center; justify-content:center; flex-direction:column;
+  }
+  .overlay.show { display:flex; }
+  .ceremony-medal { transform:scale(0); animation: medalIn .8s cubic-bezier(.2,1.6,.4,1) forwards; }
+  .ceremony-title { color:#FFE9A8; font-size:22px; font-weight:900; margin-top:22px; letter-spacing:3px;
+    opacity:0; animation: fadeUp .6s .5s forwards; text-shadow:2px 2px 0 #8B6355; }
+  .ceremony-sub { color:#fff; font-size:14px; margin-top:8px; opacity:0; animation: fadeUp .6s .8s forwards; }
+  .ceremony-close { margin-top:26px; opacity:0; animation: fadeUp .6s 1.1s forwards; }
+  @keyframes medalIn { to { transform:scale(2); } }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:none; } }
+  .pawring { position:absolute; font-size:22px; animation: pawfly 1.2s .25s ease-out forwards; opacity:0; }
+  @keyframes pawfly {
+    0% { transform: translate(0,0) scale(.4); opacity:1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(1.15); opacity:0; }
+  }
+
+  /* ════════ ⑤ 场景皮肤（外框造型 + 猫砂质感）════════ */
+  .skin { width:228px; padding:0 0 12px; border-radius:14px; overflow:hidden; }
+  .skin .inner { padding:10px 14px 4px; }
+  .skin .bd { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; padding:7px; }
+  .skin .c {
+    aspect-ratio:1; border-radius:2px; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:900;
+    background-image:
+      radial-gradient(circle at 22% 28%, var(--spkL) 0 1.6px, transparent 2.4px),
+      radial-gradient(circle at 68% 18%, var(--spkD) 0 1.3px, transparent 2px),
+      radial-gradient(circle at 42% 64%, var(--spkL) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 82% 70%, var(--spkD) 0 1.5px, transparent 2.3px),
+      radial-gradient(circle at 14% 80%, var(--spkD) 0 1.1px, transparent 1.8px),
+      linear-gradient(135deg, var(--ca), var(--cb));
+    box-shadow: inset 1.5px 1.5px 0 var(--hi), inset -1.5px -1.5px 0 var(--lo);
+  }
+  .skin .c.dug {
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(160,130,80,.18) 0 1px, transparent 1.6px),
+      radial-gradient(circle at 70% 60%, rgba(160,130,80,.14) 0 1px, transparent 1.6px),
+      repeating-linear-gradient(0deg, transparent 0 5px, rgba(160,130,80,.07) 5px 6px),
+      linear-gradient(var(--dug), var(--dug));
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
+  }
+  .skin .name { text-align:center; font-size:13px; font-weight:700; margin:8px 12px 0; color:#6B4226;
+    background:rgba(255,255,255,.7); border-radius:8px; padding:2px 0; }
+
+  /* sk1 小号猫砂盆：圆角塑料浅盆 + 盆沿握把 + 盆脚 */
+  .sk1 { background:#FDF6EC; }
+  .sk1 .tray { position:relative; margin:18px 10px 4px; background:#D9986B; border:4px solid #C07A4E;
+    border-radius: 16px 16px 22px 22px; box-shadow: inset 0 5px 0 rgba(255,255,255,.25), 0 5px 0 #A6663F; }
+  .sk1 .tray::before, .sk1 .tray::after { content:""; position:absolute; top:-12px; width:34px; height:12px;
+    background:#C07A4E; border-radius:8px 8px 0 0; }
+  .sk1 .tray::before { left:18px; } .sk1 .tray::after { right:18px; }
+  .sk1 .bd { --ca:#D4BA7C; --cb:#B8935A; --hi:#DDBF82; --lo:#8A6030; --dug:#EDE0C4; --spkL:#E8D5A0; --spkD:#9A7840; }
+
+  /* sk2 大号猫砂盆：带顶罩 + 入口拱门 */
+  .sk2 { background:#F2F8FA; }
+  .sk2 .hood { position:relative; margin:8px 10px 0; height:46px; background:linear-gradient(#A7CBD9,#8BB7C7);
+    border:4px solid #6E9AAB; border-bottom:none; border-radius: 60px 60px 0 0; }
+  .sk2 .hood::before { content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:52px; height:30px; background:#41606E; border-radius: 26px 26px 0 0; }
+  .sk2 .hood::after { content:"😺"; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); font-size:16px; }
+  .sk2 .tray { margin:0 10px 4px; background:#8BB7C7; border:4px solid #6E9AAB; border-top:none;
+    border-radius:0 0 20px 20px; box-shadow: 0 5px 0 #58818F; }
+  .sk2 .bd { --ca:#DCC089; --cb:#C19A5F; --hi:#E8CD96; --lo:#8F6A35; --dug:#F0E3C6; --spkL:#EFDCA8; --spkD:#A07F45; }
+
+  /* sk3 小房间：墙纸 + 窗户 + 踢脚线，棋盘躺在木地板上 */
+  .sk3 { background: repeating-linear-gradient(0deg,#C89B6A 0 14px,#B98955 14px 28px); }
+  .sk3 .wall { position:relative; height:58px; margin:0 0 0;
+    background: repeating-linear-gradient(90deg, #F6E7D2 0 18px, #F0DCC2 18px 36px); border-bottom:6px solid #8B6355; }
+  .sk3 .win { position:absolute; top:8px; left:22px; width:44px; height:36px; background:#BFE3F0;
+    border:4px solid #8B6355; }
+  .sk3 .win::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:3px; background:#8B6355; transform:translateX(-50%); }
+  .sk3 .frame { position:absolute; top:10px; right:24px; width:30px; height:24px; background:#FDF1DC;
+    border:3px solid #8B6355; display:flex; align-items:center; justify-content:center; font-size:11px; }
+  .sk3 .tray { margin:10px 12px 4px; background:#9C7A55; border:4px solid #6E4C40; border-radius:6px;
+    box-shadow: 0 4px 0 #54382F; }
+  .sk3 .bd { --ca:#CDB98E; --cb:#AE9468; --hi:#DCCBA2; --lo:#7E6740; --dug:#E9DEC2; --spkL:#E2D2A4; --spkD:#8C7344; }
+
+  /* sk4 公寓：楼顶 + 亮灯窗户排 + 阳台栏杆 */
+  .sk4 { background: conic-gradient(#EFE4D6 90deg,#E5D6C2 90deg 180deg,#EFE4D6 180deg 270deg,#E5D6C2 270deg) 0 0/28px 28px; }
+  .sk4 .roofline { height:10px; margin:0; background:#7E8696; border-bottom:3px solid #5F6878; }
+  .sk4 .winrow { display:flex; justify-content:center; gap:14px; padding:8px 0 6px; background:#A0A8B8; }
+  .sk4 .winrow i { width:24px; height:20px; background:linear-gradient(#FFE9A8,#F2C14E); border:3px solid #5F6878; }
+  .sk4 .winrow i:nth-child(2) { background:#41606E; }
+  .sk4 .tray { margin:0 12px 4px; background:#B8BFCC; border:4px solid #7E8696; border-radius:8px;
+    box-shadow: 0 4px 0 #5F6878; }
+  .sk4 .rail { height:14px; margin:6px 12px 0;
+    background: repeating-linear-gradient(90deg,#7E8696 0 4px,transparent 4px 14px); border-top:4px solid #7E8696; }
+  .sk4 .bd { --ca:#C9B07E; --cb:#A78F5C; --hi:#D8C28D; --lo:#776438; --dug:#EBDFC4; --spkL:#DECB97; --spkD:#7E6A3D; }
+
+  /* sk5 别墅：山形屋顶 + 烟囱 + 金柱 + 花园树篱 */
+  .sk5 { background: linear-gradient(135deg,#F3EEE7 0 40%,#E8E0D4 40% 60%,#F3EEE7 60%); }
+  .sk5 .roof { position:relative; height:46px; margin:4px 6px 0;
+    background: linear-gradient(#C96F4A,#B05B3A); border:4px solid #8B4A30;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .sk5 .chimney { position:absolute; top:0; right:46px; width:14px; height:22px; background:#8B6355; border:3px solid #6E4C40; z-index:1; }
+  .sk5 .roofwrap { position:relative; }
+  .sk5 .tray { margin:0 16px 4px; background:linear-gradient(#F7EFDC,#EFE2C6);
+    border:4px solid #C9A227; border-left-width:8px; border-right-width:8px;
+    border-image: linear-gradient(#E5C75B,#A8861C) 1; box-shadow: 0 4px 0 #8F721A, 0 0 12px rgba(201,162,39,.45); }
+  .sk5 .hedge { height:16px; margin:6px 10px 0;
+    background: radial-gradient(circle at 10% 100%, #8DC87A 0 8px, transparent 9px),
+                radial-gradient(circle at 30% 100%, #7FB96C 0 9px, transparent 10px),
+                radial-gradient(circle at 50% 100%, #8DC87A 0 8px, transparent 9px),
+                radial-gradient(circle at 70% 100%, #7FB96C 0 9px, transparent 10px),
+                radial-gradient(circle at 90% 100%, #8DC87A 0 8px, transparent 9px);
+    background-size:100% 100%; }
+  .sk5 .bd { --ca:#D8BC86; --cb:#B89A5E; --hi:#E6CD97; --lo:#84693A; --dug:#F0E6CC; --spkL:#EBD8A4; --spkD:#8C7240; }
+
+  /* ════════ ⑥ 排雷交互动画 ════════ */
+  .play-wrap { display:flex; gap:18px; justify-content:center; align-items:flex-start; flex-wrap:wrap; }
+  .playboard-frame { position:relative; background:#D9986B; border:4px solid #C07A4E; border-radius:16px;
+    padding:8px; box-shadow: inset 0 5px 0 rgba(255,255,255,.25), 0 5px 0 #A6663F; }
+  .playboard-frame.shake { animation: bshake .4s linear; }
+  @keyframes bshake { 20%{transform:translate(-5px,2px) rotate(-1deg)} 40%{transform:translate(5px,-2px) rotate(1deg)} 60%{transform:translate(-4px,-2px)} 80%{transform:translate(4px,2px)} }
+  #playboard { display:grid; grid-template-columns:repeat(5,46px); gap:3px; position:relative; }
+  .pc {
+    width:46px; height:46px; border-radius:2px; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; font-weight:900; cursor:pointer; user-select:none;
+    background-image:
+      radial-gradient(circle at 22% 28%, #E8D5A0 0 1.6px, transparent 2.4px),
+      radial-gradient(circle at 68% 18%, #9A7840 0 1.3px, transparent 2px),
+      radial-gradient(circle at 42% 64%, #E8D5A0 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 82% 70%, #9A7840 0 1.5px, transparent 2.3px),
+      linear-gradient(135deg, #D4BA7C, #B8935A);
+    box-shadow: inset 2px 2px 0 #DDBF82, inset -2px -2px 0 #8A6030;
+  }
+  .pc:active { filter:brightness(.94); }
+  .pc.dug {
+    cursor:default;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 5px, rgba(160,130,80,.08) 5px 6px),
+      linear-gradient(#EDE0C4,#EDE0C4);
+    box-shadow: inset 1px 1px 4px rgba(0,0,0,.22);
+    animation: rippleIn .34s cubic-bezier(.3,1.4,.5,1);
+  }
+  @keyframes rippleIn { 0%{transform:scale(.5);opacity:.2} 65%{transform:scale(1.06)} 100%{transform:scale(1)} }
+  .pc.boom { background:#FFE8D6 !important; box-shadow: inset 1px 1px 4px rgba(0,0,0,.25); animation:none; }
+  .pc .flagmark { animation: flagpop .3s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes flagpop { 0%{transform:scale(.2)} 70%{transform:scale(1.3)} 100%{transform:scale(1)} }
+  .grain { position:absolute; width:5px; height:5px; border-radius:1px; z-index:9; pointer-events:none;
+    animation: grainfly .5s ease-out forwards; }
+  @keyframes grainfly { to { transform: translate(var(--dx), var(--dy)) rotate(160deg); opacity:0; } }
+  .bparticle { position:absolute; width:7px; height:7px; border-radius:2px; z-index:9; pointer-events:none;
+    animation: bfly .7s ease-out forwards; }
+  @keyframes bfly { to { transform: translate(var(--dx), var(--dy)) rotate(220deg); opacity:0; } }
+  .stink { position:absolute; font-size:15px; color:#8C9A4A; z-index:9; pointer-events:none; font-weight:900;
+    animation: stinkrise 1.3s ease-out forwards; }
+  @keyframes stinkrise { 0%{opacity:0} 25%{opacity:.9} 100%{ transform:translateY(-46px) translateX(6px) scale(1.25); opacity:0; } }
+  .ring { position:absolute; border:3px solid #FF8C42; border-radius:50%; z-index:8; pointer-events:none;
+    width:30px; height:30px; animation: ringout .8s ease-out forwards; }
+  @keyframes ringout { to { transform:scale(4.5); opacity:0; } }
+  .heartfly { position:fixed; font-size:22px; z-index:60; pointer-events:none; animation: heartup 1.5s ease-out forwards; }
+  @keyframes heartup { 0%{transform:translateY(0) scale(.5);opacity:1} 100%{transform:translateY(-130px) scale(1.3) rotate(14deg);opacity:0} }
+  .play-side { text-align:center; width:140px; }
+  .play-side .statecap { font-size:13px; font-weight:700; color:#6B4226; margin-top:6px; min-height:38px; line-height:1.5; }
+  .play-controls { text-align:center; margin-top:14px; }
+  .hinttext { font-size:12px; color:#A08770; margin-top:10px; text-align:center; line-height:1.7; }
+
+  /* ════════ ⑦ 关卡地图 ════════ */
+  .phone {
+    position:relative; width:330px; height:560px; margin:0 auto;
+    border:8px solid #5C4033; border-radius:28px; overflow:hidden; background:#FDF6EC;
+  }
+  .phone .topbar {
+    position:absolute; top:0; left:0; right:0; height:48px; z-index:10;
+    background:#FFFDF8; border-bottom:2px solid #EAD9BC;
+    display:flex; align-items:center; justify-content:space-between; padding:0 12px;
+    font-size:13px; font-weight:700; color:#6B4226;
+  }
+  .phone .topbar .lv { background:#FF8C42; color:#fff; border-radius:10px; padding:2px 10px; font-size:12px; }
+  .mapscroll { position:absolute; top:48px; bottom:0; left:0; right:0; overflow-y:auto; }
+  .mapinner { position:relative; width:100%; }
+  .seg { position:absolute; left:0; right:0; }
+  .chapter {
+    position:absolute; left:50%; transform:translateX(-50%); z-index:5;
+    font-size:12px; font-weight:700; color:#fff; white-space:nowrap;
+    padding:4px 16px; border-radius:14px; box-shadow:0 2px 0 rgba(0,0,0,.15);
+  }
+  .lnode {
+    position:absolute; width:56px; height:56px; border-radius:50%; z-index:4;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:900; cursor:pointer; border:3px solid;
+  }
+  .lnode .stars { position:absolute; bottom:-15px; font-size:8px; letter-spacing:-1px; white-space:nowrap; }
+  .lnode.done { background:#A8D8A8; border-color:#7FAF7F; color:#3F6B3F; box-shadow:0 3px 0 #7FAF7F; }
+  .lnode.cur  { background:#FF8C42; border-color:#fff; color:#fff;
+    box-shadow:0 0 0 4px rgba(255,140,66,.35), 0 3px 0 #C56A44; animation: nodepulse 1.3s ease-in-out infinite; }
+  @keyframes nodepulse { 50% { transform:scale(1.12); } }
+  .lnode.lock { background:#D4C4A0; border-color:#BCA87E; color:#8B7B5A; opacity:.78; }
+  .lnode.shakeno { animation: noshake .35s linear; }
+  @keyframes noshake { 25%{transform:translateX(-5px)} 50%{transform:translateX(5px)} 75%{transform:translateX(-3px)} }
+  .goal { position:absolute; left:50%; transform:translateX(-50%); font-size:34px; z-index:4; }
+  .startmat { position:absolute; left:50%; transform:translateX(-50%); z-index:4;
+    background:#F2A7BB; color:#fff; font-size:12px; font-weight:700; border-radius:12px; padding:3px 14px; }
+  .maptoast {
+    position:absolute; z-index:20; background:rgba(107,66,38,.92); color:#fff;
+    font-size:12px; padding:5px 12px; border-radius:10px; white-space:nowrap;
+    animation: toastfade 1.4s forwards;
+  }
+  @keyframes toastfade { 0%{opacity:0; transform:translateY(6px)} 15%{opacity:1; transform:none} 80%{opacity:1} 100%{opacity:0} }
+  /* 地图顶部 Key Art 风格天空 + 草丘 */
+  .mapsky { position:absolute; top:0; left:0; right:0; height:240px; z-index:0;
+    background: linear-gradient(#9FD0E8, #BCE0EF 55%, rgba(188,224,239,0)); }
+  .mapsun { position:absolute; top:20px; right:26px; width:30px; height:30px; background:#FFE9A8; border:2px solid #F2C14E; z-index:1;
+    box-shadow: 0 0 0 5px rgba(255,233,168,.4), 0 0 22px 10px rgba(255,233,168,.5); }
+  .maphill { position:absolute; width:320px; height:96px; border-radius:50%; background:#AFD592; z-index:0; }
+  /* 章节整幅场景背景（材质铺满，中轴留浅色通道保证路径可读） */
+  .seg::after { content:""; position:absolute; left:50%; transform:translateX(-50%);
+    width:184px; height:100%; background:rgba(255,252,244,.45); }
+  .sg1 { background:
+      radial-gradient(circle at 18% 26%, #DDC592 0 2px, transparent 3px),
+      radial-gradient(circle at 52% 68%, #B8935A 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 38%, #DDC592 0 2px, transparent 3px),
+      linear-gradient(#F2E3C2, #E8D2A6);
+    background-size: 58px 44px, 58px 44px, 58px 44px, 100% 100%; }
+  .sg2 { background: conic-gradient(#EAF4F7 90deg,#DDEBF0 90deg 180deg,#EAF4F7 180deg 270deg,#DDEBF0 270deg) 0 0/26px 26px; }
+  .sg3 { background: repeating-linear-gradient(90deg, #F6E7D2 0 18px, #F0DCC2 18px 36px); }
+  .sg4 { background:
+      repeating-linear-gradient(0deg, transparent 0 26px, rgba(95,104,120,.14) 26px 29px),
+      repeating-linear-gradient(90deg, transparent 0 26px, rgba(95,104,120,.14) 26px 29px),
+      linear-gradient(#E9E2D5,#E2D8C6); }
+  .sg5 { background: linear-gradient(115deg,#F4EFE6 0 28%, #EAE2D3 28% 33%, #F4EFE6 33% 62%, #ECE4D6 62% 68%, #F4EFE6 68%); }
+  /* 章节道具（全部手绘像素/CSS 造型，不用 Emoji） */
+  .mprop { position:absolute; z-index:2; }
+  .mound { position:absolute; width:64px; height:26px; z-index:2;
+    background:linear-gradient(#DDC592,#C9A96E); border-radius:50% 50% 0 0; }
+  .mound.sm { width:40px; height:18px; }
+  .mapdome { position:absolute; width:74px; z-index:2; }
+  .mapdome .dm { height:34px; background:linear-gradient(#A7CBD9,#8BB7C7); border:3px solid #6E9AAB;
+    border-bottom:none; border-radius:40px 40px 0 0; position:relative; }
+  .mapdome .dm::before { content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:30px; height:20px; background:#41606E; border-radius:16px 16px 0 0; }
+  .mapdome .tr { height:18px; background:#8BB7C7; border:3px solid #6E9AAB; border-top:none; border-radius:0 0 10px 10px; }
+  .maprug { position:absolute; width:84px; height:34px; background:#E8B4B8; border:3px solid #D49A9E;
+    border-radius:50%; z-index:2; opacity:.9; }
+  .mapwins { position:absolute; display:flex; gap:8px; z-index:2; }
+  .mapwins i { width:20px; height:24px; background:linear-gradient(#FFE9A8,#F2C14E); border:3px solid #5F6878; display:block; }
+  .mapwins i.off { background:#41606E; }
+  .maphedge { position:absolute; left:0; right:0; height:18px; z-index:2;
+    background: radial-gradient(circle at 11px 18px, #8DC87A 0 9px, transparent 10px);
+    background-size: 22px 18px; }
+  .sparkpx { position:absolute; width:5px; height:5px; background:#F2C14E; z-index:2; animation: twinkle 1.6s infinite; }
+  /* 与等级勋章同步的迷你勋章 */
+  .minimedal { display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; background:var(--mc,#C9A96E); margin-right:5px; vertical-align:-6px;
+    clip-path: polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%);
+    box-shadow: inset 0 0 0 2px #5C4033, inset 2px 2px 0 rgba(255,255,255,.3); }
+  .nodebadge { position:absolute; top:-13px; right:-13px; z-index:6; }
+  .nodebadge .minimedal { width:25px; height:25px; margin:0; }
+  .lnode.lock .nodebadge { filter:grayscale(1); opacity:.85; }
+
+  footer { text-align:center; font-size:12px; color:#A08770; line-height:1.9; }
+</style>
+</head>
+<body>
+
+<h1>🐱 猫咪如厕大冒险 · 素材预览 <small style="font-size:13px;color:#E8855A">v2 修订稿</small></h1>
+<p class="note">本次修订：② Key Art 细节深化 · ⑤ 场景外框造型化 + 猫砂质感 · ⑥ 新增排雷交互动画（可试玩）· ⑦ 新增关卡地图设计稿<br>
+全部为代码绘制（SVG 像素画 + CSS 动画），零图片、零依赖，验收后直接移植进 <code>src/App.jsx</code>。</p>
+
+<!-- ① 角色 -->
+<section>
+  <h2>① 主角猫咪 · 像素造型四态 <span class="tag">已确认项</span></h2>
+  <p class="sub">16×16 像素，奶油底色 + 猫爪橙斑纹。第五个为夜晚剪影变体（故事动画第1幕，眼睛发光）。</p>
+  <div class="row">
+    <div class="cell-item"><div data-sprite="catSit" data-scale="5"></div><div class="cap">😺 端坐（默认）</div></div>
+    <div class="cell-item"><div data-sprite="catTiptoe" data-scale="5"></div><div class="cap">🐾 踮爪小心</div></div>
+    <div class="cell-item"><div data-sprite="catShock" data-scale="5"></div><div class="cap">😱 踩到便便</div></div>
+    <div class="cell-item"><div data-sprite="catHappy" data-scale="5"></div><div class="cap">😸 满足/通关</div></div>
+    <div class="cell-item"><div data-sprite="catSit" data-scale="5" data-palette="sil"></div><div class="cap">🌙 夜晚剪影</div></div>
+  </div>
+</section>
+
+<!-- ② 主视觉（深化）-->
+<section>
+  <h2>② 主视觉 Key Art · 深化版 <span class="tag">本次修订 1</span></h2>
+  <p class="sub">新增细节层：远景双层草丘 + 白栅栏 + 花丛蝴蝶 + 飞鸟 + 木质招牌标题（带钉子）+ 爪印足迹引向猫砂盆 + 角色投影 + 砂粒质感地面 + 呼吸感按钮。共 6 个景深层次。</p>
+  <div class="keyart">
+    <div class="sun"></div>
+    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    <span class="bird b1">🐦</span><span class="bird b2">🐦</span>
+    <div class="hill"></div><div class="hill h2"></div>
+    <div class="fence"></div>
+    <span class="flower" style="top:282px;left:30px">🌼</span>
+    <span class="flower" style="top:292px;left:64px">🌷</span>
+    <span class="flower" style="top:286px;right:40px">🌼</span>
+    <span class="flower" style="top:296px;right:84px">🌻</span>
+    <span class="butterfly">🦋</span>
+    <div class="ka-sign"><div class="ka-title">猫咪如厕大冒险</div></div>
+    <div class="ka-ribbon">独 居 小 猫 的 避 屎 之 旅</div>
+    <div class="ka-ground"></div>
+    <div class="shadow" style="bottom:66px;left:34px;width:96px;height:14px"></div>
+    <div class="shadow" style="bottom:58px;right:26px;width:110px;height:14px"></div>
+    <div class="ka-cat" data-sprite="catTiptoe" data-scale="7"></div>
+    <div class="ka-box" data-sprite="box" data-scale="5"></div>
+    <div class="ka-pawtrail">
+      <span style="bottom:96px;left:138px;opacity:.6">🐾</span>
+      <span style="bottom:108px;left:166px;opacity:.45">🐾</span>
+      <span style="bottom:96px;left:192px;opacity:.32">🐾</span>
+      <span style="bottom:110px;left:218px;opacity:.2">🐾</span>
+    </div>
+    <div class="ka-poop1">💩</div>
+    <div class="ka-q1">?</div><div class="ka-q2">?</div>
+    <span class="ka-spark" style="top:236px;left:36px">✨</span>
+    <span class="ka-spark" style="top:330px;right:30px;animation-delay:1.2s">✨</span>
+    <button class="ka-btn">继续冒险 ▶</button>
+  </div>
+</section>
+
+<!-- ③ 故事动画 -->
+<section>
+  <h2>③ 首次进入 · 故事动画（4幕）· Key Art 同风格版 <span class="tag">本次修订 1</span></h2>
+  <p class="sub">与 Key Art 视觉元素全面对齐：字幕改为<b>同款木质招牌</b>（带钉子）；第1幕加像素月亮+闪烁星星+木地板；第2/3幕加<b>同款窗户</b>（窗外有云）+ 地面材质 + 角色投影；第4幕加太阳云朵 + <b>砂粒质感地面</b> + 爪印足迹。每幕约 3.2 秒自动切换循环。</p>
+  <div class="stage" id="stage">
+    <div class="scene s1">
+      <div class="moon"></div>
+      <span class="star" style="top:20px;right:46px">✦</span>
+      <span class="star" style="top:54px;right:90px;animation-delay:.5s">✦</span>
+      <span class="star" style="top:36px;left:96px;animation-delay:.9s">✦</span>
+      <span class="star" style="top:80px;left:54px;animation-delay:1.3s">✦</span>
+      <div class="window"></div>
+      <div class="woodband"></div>
+      <div class="sshadow" style="bottom:88px;left:50%;margin-left:-46px;width:92px;height:13px"></div>
+      <div class="sil" data-sprite="catSit" data-scale="6" data-palette="sil"></div>
+      <div class="cap">「铲屎的出远门了。<br>这个家，现在归我管。」</div>
+    </div>
+    <div class="scene s2">
+      <div class="swin" style="top:22px;left:24px"><div class="scloud"></div></div>
+      <div class="sandband"></div>
+      <div class="sshadow day" style="bottom:108px;left:50%;margin-left:-100px;width:200px;height:16px"></div>
+      <div class="bigbox" data-sprite="box" data-scale="9"></div>
+      <div class="pp pp1" style="bottom:196px;left:74px"  data-sprite="poop" data-scale="5"></div>
+      <div class="pp pp2" style="bottom:206px;left:150px" data-sprite="poop" data-scale="4"></div>
+      <div class="pp pp3" style="bottom:192px;left:216px" data-sprite="poop" data-scale="6"></div>
+      <div class="bang">❗</div>
+      <div class="cap">「但是……没有人铲屎了。」</div>
+    </div>
+    <div class="scene s3">
+      <div class="swin" style="top:22px;right:24px"><div class="scloud"></div></div>
+      <div class="woodband"></div>
+      <div class="sshadow" style="top:214px;left:50%;margin-left:-56px;width:112px;height:14px"></div>
+      <div class="shaker" data-sprite="catShock" data-scale="8"></div>
+      <div class="sweat">💦</div>
+      <div class="squeeze">😖</div>
+      <div class="cap">「可我还是得上厕所啊！！」</div>
+    </div>
+    <div class="scene s4">
+      <div class="sun" style="top:18px;right:24px;width:30px;height:30px"></div>
+      <div class="cloud c3" style="top:30px;left:30px"></div>
+      <div class="sandband"></div>
+      <div class="ka-pawtrail">
+        <span style="bottom:148px;left:48px;opacity:.5">🐾</span>
+        <span style="bottom:160px;left:84px;opacity:.38">🐾</span>
+        <span style="bottom:148px;left:118px;opacity:.25">🐾</span>
+      </div>
+      <div class="sshadow day" style="bottom:144px;right:18px;width:112px;height:13px"></div>
+      <div class="walker" data-sprite="catTiptoe" data-scale="6"></div>
+      <div class="targetbox" data-sprite="box" data-scale="5"></div>
+      <div class="q q1">?</div><div class="q q2">?</div>
+      <div class="cap">「凭我的鼻子，避开所有💩——<br><b>开始如厕大冒险！</b>」</div>
+    </div>
+  </div>
+  <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i></div>
+  <div class="controls"><button class="demo-btn" onclick="restartIntro()">↻ 从头重播</button></div>
+</section>
+
+<!-- ④ 勋章 -->
+<section>
+  <h2>④ 等级勋章 · 猫如厕仪式六部曲 <span class="tag">本次修订 2</span></h2>
+  <p class="sub">六枚勋章构成<b>一条连贯叙事线</b>——完整复刻猫咪上厕所的仪式流程：<b>踏砂 → 嗅嗅 → 踮爪 → 刨坑 → 埋宝 → 加冕</b>，每一级都是「小猫」自己（无"达人"类人类称谓），且与玩法一一呼应（嗅嗅=数字线索、踮爪=避开便便、埋宝=通关掩埋）。图标升级为 <b>16×16 多色像素</b>（奶油猫爪/粉鼻/砂色/白瓷马桶分色绘制），一眼可读。<b>点击任意勋章</b>预览升级颁章仪式。</p>
+  <div class="row">
+    <div class="cell-item"><div class="medal" style="background:#8DC87A" data-icon="iconStep"  data-scale="4" onclick="ceremony('踏砂小猫','初始获得 · 第一次踏进猫砂盆',this)"></div><div class="m-name">Lv.1 踏砂小猫</div><div class="m-cond">肉垫踏进砂盆 · 初始</div></div>
+    <div class="cell-item"><div class="medal" style="background:#A8D4E6" data-icon="iconSniff" data-scale="4" onclick="ceremony('嗅嗅小猫','通关第 4 关 · 鼻子嗅出线索',this)"></div><div class="m-name">Lv.2 嗅嗅小猫</div><div class="m-cond">粉鼻嗅线索 · 通关4关</div></div>
+    <div class="cell-item"><div class="medal" style="background:#F2A7BB" data-icon="iconTip"   data-scale="4" onclick="ceremony('踮爪小猫','通关第 8 关 · 踮爪避开便便',this)"></div><div class="m-name">Lv.3 踮爪小猫</div><div class="m-cond">单爪踮砂尖 · 通关8关</div></div>
+    <div class="cell-item"><div class="medal" style="background:#7FA9BB" data-icon="iconDig"   data-scale="4" onclick="ceremony('刨坑小猫','通关第 12 关 · 刨出完美砂坑',this)"></div><div class="m-name">Lv.4 刨坑小猫</div><div class="m-cond">爪刨砂坑 · 通关12关</div></div>
+    <div class="cell-item"><div class="medal" style="background:#8B6355" data-icon="iconBury"  data-scale="4" onclick="ceremony('埋宝小猫','通关第 16 关 · 掩埋滴水不漏',this)"></div><div class="m-name">Lv.5 埋宝小猫</div><div class="m-cond">砂丘埋宝 · 通关16关</div></div>
+    <div class="cell-item"><div class="medal final" style="background:linear-gradient(135deg,#F2C14E,#E8855A)" data-icon="iconKing" data-scale="4" onclick="ceremony('如厕之王','通关全部 20 关 · 加冕白瓷王座',this)"></div><div class="m-name">Lv.6 如厕之王</div><div class="m-cond">加冕马桶王座 · 通关20关</div></div>
+    <div class="cell-item"><div class="medal locked" style="background:#8B6355" data-icon="iconKing" data-scale="4"></div><div class="m-name">未解锁状态</div><div class="m-cond">剪影+🔒</div></div>
+  </div>
+</section>
+
+<!-- ⑤ 场景皮肤（升级版）-->
+<section>
+  <h2>⑤ 棋盘场景 · 外框造型 + 猫砂质感 <span class="tag">本次修订 2</span></h2>
+  <p class="sub">每个场景的<b>外框轮廓直接表达场景本体</b>：浅盆带握把 → 带罩猫窝盆（入口有小猫）→ 房间（墙纸+窗+相框+木地板）→ 公寓（楼顶+亮灯窗+阳台栏杆）→ 别墅（尖屋顶+烟囱+金柱+树篱）。<br>
+  格子改用<b>多层砂粒噪点</b>模拟猫砂颗粒质感；翻开格带「耙过的细砂纹」。</p>
+  <div class="row" id="skins"></div>
+</section>
+
+<!-- ⑥ 排雷交互动画 -->
+<section>
+  <h2>⑥ 排雷交互动画 · 可试玩 <span class="tag">本次修订 3</span></h2>
+  <p class="sub"><b>正向反馈</b>：点砂格 → 涟漪式翻开 + 砂粒飞溅；翻到「0」自动连锁波浪扩散；记号模式盖爪印有弹跳；过半触发橙色扩散环；全部翻开触发爱心爪印庆祝。<br>
+  <b>反向反馈</b>：踩到💩 → 棋盘震动 + 棕色粒子爆开 + 臭气线上升 + 猫咪表情变惊吓。</p>
+  <div class="play-wrap">
+    <div class="playboard-frame" id="pframe">
+      <div id="playboard"></div>
+    </div>
+    <div class="play-side">
+      <div id="reactcat" data-sprite="catSit" data-scale="5"></div>
+      <div class="statecap" id="statecap">我在看着你铲哦～</div>
+    </div>
+  </div>
+  <div class="play-controls">
+    <button class="demo-btn on" id="modebtn" onclick="toggleMode()">🐾 探砂模式</button>
+    <button class="demo-btn" onclick="resetPlay()">↻ 重置</button>
+  </div>
+  <p class="hinttext">提示：左下角区域是安全区（点开试试连锁波浪）；右上角和中下方埋了💩。<br>切到「🚩 记号模式」再点格子 = 盖爪印标记。</p>
+</section>
+
+<!-- ⑦ 关卡地图 -->
+<section>
+  <h2>⑦ 关卡地图 · 封闭上升路线 <span class="tag">本次修订 4</span></h2>
+  <p class="sub">手机竖屏框内<b>可上下滑动</b>。本次修订：① <b>整幅场景背景铺满</b>各章节——砂地（颗粒+砂丘+砂盆+爪印）→ 浴室格砖（带罩猫厕）→ 房间墙纸（窗户+地毯+毛线球）→ 公寓墙面（亮灯窗+盆栽）→ 别墅大理石（树木+树篱+闪光），全部手绘像素/CSS 造型，<b>零 Emoji 点缀</b>；中轴保留浅色通道保证路径可读；② 山顶终点改为<b>像素别墅</b>；③ 章节横幅与升级节点的图标与新版勋章同步。底部=第1关，严格顺序解锁，<b>点锁定关卡</b>会抖动提示；打开已自动定位当前关（第8关）。实际实现中章节横幅将吸顶。</p>
+  <div class="phone">
+    <div class="topbar">
+      <span>😺 我的如厕等级</span>
+      <span class="lv"><span class="minimedal" data-icon="iconTip" data-scale="1" style="--mc:#F2A7BB"></span>踮爪小猫 Lv.3</span>
+    </div>
+    <div class="mapscroll" id="mapscroll">
+      <div class="mapinner" id="mapinner"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ——— 验收方式 ———<br>
+  对每个分区告诉我：✅ 满意 / 🔧 哪里要改（颜色、造型、动作、节奏都可以提）<br>
+  全部确认后，我再按 P0 → P3 开始往游戏里实现。
+</footer>
+
+<!-- 升级仪式覆盖层 -->
+<div class="overlay" id="ov" onclick="this.classList.remove('show')">
+  <div style="position:relative">
+    <div class="ceremony-medal" id="ovMedal"></div>
+    <div id="ovPaws"></div>
+  </div>
+  <div class="ceremony-title" id="ovTitle"></div>
+  <div class="ceremony-sub" id="ovSub"></div>
+  <button class="demo-btn ceremony-close">点击任意处关闭</button>
+</div>
+
+<script src="asset-sprites.js"></script>
+<script>
+  /* ── SVG 像素渲染 ── */
+  function spriteSVG(map, palette, scale) {
+    const w = map[0].length, h = map.length;
+    let rects = "";
+    map.forEach((row, y) => {
+      for (let x = 0; x < row.length; x++) {
+        const col = palette[row[x]];
+        if (col) rects += `<rect x="${x}" y="${y}" width="1" height="1" fill="${col}"/>`;
+      }
+    });
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w*scale}" height="${h*scale}" viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges">${rects}</svg>`;
+  }
+  function renderAll(root) {
+    (root || document).querySelectorAll("[data-sprite]").forEach(el => {
+      const map = MAPS[el.dataset.sprite];
+      const pal = el.dataset.palette === "sil" ? { ...PALETTE, ...SILHOUETTE } : PALETTE;
+      el.innerHTML = spriteSVG(map, pal, +el.dataset.scale || 4);
+    });
+    (root || document).querySelectorAll("[data-icon]").forEach(el => {
+      // 勋章图标使用全局调色板（多色像素，提高辨识度）
+      el.innerHTML = spriteSVG(MAPS[el.dataset.icon], PALETTE, +el.dataset.scale || 4);
+    });
+  }
+  renderAll();
+
+  /* ── 故事动画轮播 ── */
+  const scenes = [...document.querySelectorAll(".scene")];
+  const dots = [...document.querySelectorAll("#dots i")];
+  let cur = 0, timer = null;
+  function show(i) {
+    cur = i;
+    scenes.forEach((s, j) => s.classList.toggle("active", j === i));
+    dots.forEach((d, j) => d.classList.toggle("on", j === i));
+  }
+  function startIntro() { clearInterval(timer); show(0); timer = setInterval(() => show((cur + 1) % scenes.length), 3200); }
+  function restartIntro() { startIntro(); }
+  startIntro();
+
+  /* ── 升级仪式 ── */
+  function ceremony(title, cond, medalEl) {
+    const ov = document.getElementById("ov");
+    const m = document.getElementById("ovMedal");
+    m.innerHTML = "";
+    const clone = medalEl.cloneNode(true);
+    clone.classList.remove("locked");
+    clone.removeAttribute("onclick");
+    m.appendChild(clone);
+    renderAll(m);
+    const paws = document.getElementById("ovPaws");
+    paws.innerHTML = "";
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2;
+      const sp = document.createElement("span");
+      sp.className = "pawring";
+      sp.textContent = i % 2 ? "🐾" : "✨";
+      sp.style.left = "28px"; sp.style.top = "28px";
+      sp.style.setProperty("--dx", Math.cos(a) * 90 + "px");
+      sp.style.setProperty("--dy", Math.sin(a) * 90 + "px");
+      paws.appendChild(sp);
+    }
+    document.getElementById("ovTitle").textContent = "升级！" + title;
+    document.getElementById("ovSub").textContent = cond;
+    ov.classList.remove("show"); void ov.offsetWidth; ov.classList.add("show");
+  }
+
+  /* ── 场景皮肤（外框造型版）── */
+  const NUM_COLOR = ["", "#E8855A", "#8DC87A", "#E05A5A", "#C9A96E"];
+  const DEMO = [0,0,1,0,0, 0,2,1,0,9, 1,1,0,8,0];
+  function demoBoard() {
+    return `<div class="bd">${DEMO.map(v => {
+      if (v === 9) return `<div class="c">🐾</div>`;
+      if (v === 8) return `<div class="c dug" style="background:#FFE8D6">💩</div>`;
+      if (v > 0) return `<div class="c dug" style="color:${NUM_COLOR[v]}">${v}</div>`;
+      return `<div class="c"></div>`;
+    }).join("")}</div>`;
+  }
+  document.getElementById("skins").innerHTML = `
+    <div class="skin sk1">
+      <div class="inner"><div class="tray">${demoBoard()}</div></div>
+      <div class="name">🥣 小号猫砂盆 (1-4关)</div>
+    </div>
+    <div class="skin sk2">
+      <div class="inner"><div class="hood"></div><div class="tray">${demoBoard()}</div></div>
+      <div class="name">🛁 大号猫砂盆 (5-8关)</div>
+    </div>
+    <div class="skin sk3">
+      <div class="wall"><div class="win"></div><div class="frame">🐟</div></div>
+      <div class="inner"><div class="tray">${demoBoard()}</div></div>
+      <div class="name">🚪 小房间 (9-12关)</div>
+    </div>
+    <div class="skin sk4">
+      <div class="roofline"></div>
+      <div class="winrow"><i></i><i></i><i></i></div>
+      <div class="inner"><div class="tray">${demoBoard()}</div><div class="rail"></div></div>
+      <div class="name">🏢 公寓 (13-16关)</div>
+    </div>
+    <div class="skin sk5">
+      <div class="roofwrap"><div class="chimney"></div><div class="roof"></div></div>
+      <div class="inner"><div class="tray">${demoBoard()}</div><div class="hedge"></div></div>
+      <div class="name">🏰 别墅 (17-20关)</div>
+    </div>`;
+
+  /* ── ⑥ 排雷交互试玩 ── */
+  const PB = { cols:5, rows:4, mines:[[0,4],[2,2],[3,1]] };
+  let pbState, flagMode = false, failed = false;
+  const NUMC = ["", "#E8855A", "#8DC87A", "#E05A5A", "#C9A96E", "#F2A7BB"];
+  function pbInit() {
+    pbState = [];
+    for (let r = 0; r < PB.rows; r++) {
+      pbState.push([]);
+      for (let c = 0; c < PB.cols; c++) {
+        const mine = PB.mines.some(([mr,mc]) => mr===r && mc===c);
+        pbState[r].push({ mine, dug:false, flag:false, n:0 });
+      }
+    }
+    for (let r = 0; r < PB.rows; r++) for (let c = 0; c < PB.cols; c++) {
+      let n = 0;
+      for (let dr=-1; dr<=1; dr++) for (let dc=-1; dc<=1; dc++) {
+        const rr=r+dr, cc=c+dc;
+        if (rr>=0&&rr<PB.rows&&cc>=0&&cc<PB.cols&&pbState[rr][cc].mine) n++;
+      }
+      pbState[r][c].n = n;
+    }
+    failed = false;
+    document.getElementById("pframe").classList.remove("shake");
+    pbRender();
+    setCat("catSit", "我在看着你铲哦～");
+  }
+  function pbRender() {
+    const bd = document.getElementById("playboard");
+    bd.innerHTML = "";
+    for (let r = 0; r < PB.rows; r++) for (let c = 0; c < PB.cols; c++) {
+      const cell = pbState[r][c];
+      const div = document.createElement("div");
+      div.className = "pc" + (cell.dug ? " dug" : "") + (cell.dug && cell.mine ? " boom" : "");
+      if (cell.dug) {
+        if (cell.mine) div.textContent = "💩";
+        else if (cell.n) { div.textContent = cell.n; div.style.color = NUMC[cell.n] || "#8B6355"; }
+      } else if (cell.flag) {
+        div.innerHTML = `<span class="flagmark">🐾</span>`;
+      }
+      div.onclick = () => pbClick(r, c, div);
+      bd.appendChild(div);
+    }
+  }
+  function setCat(sprite, text) {
+    const rc = document.getElementById("reactcat");
+    rc.dataset.sprite = sprite; renderAll(rc.parentElement);
+    document.getElementById("statecap").textContent = text;
+  }
+  // 粒子挂在外框层（pframe），避免棋盘重绘时被清掉；+8 为内边距偏移
+  function cellCenter(r, c) { return { x: c*49 + 23 + 8, y: r*49 + 23 + 8 }; }
+  function spawnGrains(r, c, colors, cls, count) {
+    const bd = document.getElementById("pframe");
+    const { x, y } = cellCenter(r, c);
+    for (let i = 0; i < count; i++) {
+      const g = document.createElement("span");
+      g.className = cls;
+      g.style.left = x + "px"; g.style.top = y + "px";
+      g.style.background = colors[i % colors.length];
+      const a = Math.random() * Math.PI * 2, d = 22 + Math.random() * 26;
+      g.style.setProperty("--dx", Math.cos(a)*d + "px");
+      g.style.setProperty("--dy", (Math.sin(a)*d - 14) + "px");
+      bd.appendChild(g);
+      setTimeout(() => g.remove(), 800);
+    }
+  }
+  function spawnStink(r, c) {
+    const bd = document.getElementById("pframe");
+    const { x, y } = cellCenter(r, c);
+    ["〜","〜","💨"].forEach((ch, i) => {
+      const s = document.createElement("span");
+      s.className = "stink";
+      s.textContent = ch;
+      s.style.left = (x - 12 + i*10) + "px"; s.style.top = (y - 18) + "px";
+      s.style.animationDelay = i*0.15 + "s";
+      if (ch !== "💨") s.style.transform = "rotate(90deg)";
+      bd.appendChild(s);
+      setTimeout(() => s.remove(), 1600);
+    });
+  }
+  function milestoneRing() {
+    const bd = document.getElementById("pframe");
+    const ring = document.createElement("span");
+    ring.className = "ring";
+    ring.style.left = "calc(50% - 15px)"; ring.style.top = "calc(50% - 15px)";
+    bd.appendChild(ring);
+    setTimeout(() => ring.remove(), 900);
+  }
+  let ringFired = false;
+  function celebrate() {
+    setCat("catHappy", "全部探明！优雅如厕 😸");
+    const frame = document.getElementById("pframe").getBoundingClientRect();
+    const ems = ["💕","🐾","💗","✨","🐾","💖"];
+    ems.forEach((e, i) => {
+      setTimeout(() => {
+        const sp = document.createElement("span");
+        sp.className = "heartfly";
+        sp.textContent = e;
+        sp.style.left = (frame.left + 10 + Math.random()*(frame.width-30)) + "px";
+        sp.style.top = (frame.top + frame.height - 24) + "px";
+        document.body.appendChild(sp);
+        setTimeout(() => sp.remove(), 1600);
+      }, i * 140);
+    });
+  }
+  function checkWin() {
+    let dugCount = 0, safeTotal = PB.rows*PB.cols - PB.mines.length;
+    pbState.flat().forEach(c => { if (c.dug && !c.mine) dugCount++; });
+    if (!ringFired && dugCount >= safeTotal/2) { ringFired = true; milestoneRing(); }
+    if (dugCount === safeTotal) celebrate();
+  }
+  function reveal(r, c, dist) {
+    const cell = pbState[r][c];
+    if (cell.dug || cell.flag) return;
+    cell.dug = true;
+    setTimeout(() => {
+      pbRender();
+      spawnGrains(r, c, ["#D8BC86","#B8935A","#EDE0C4","#9A7840"], "grain", 4);
+    }, dist * 90);
+    if (cell.n === 0 && !cell.mine) {
+      for (let dr=-1; dr<=1; dr++) for (let dc=-1; dc<=1; dc++) {
+        const rr=r+dr, cc=c+dc;
+        if (rr>=0&&rr<PB.rows&&cc>=0&&cc<PB.cols) reveal(rr, cc, dist+1);
+      }
+    }
+  }
+  function pbClick(r, c, div) {
+    if (failed) return;
+    const cell = pbState[r][c];
+    if (cell.dug) return;
+    if (flagMode) {
+      cell.flag = !cell.flag;
+      pbRender();
+      return;
+    }
+    if (cell.flag) return;
+    if (cell.mine) {
+      failed = true;
+      cell.dug = true;
+      pbRender();
+      const frame = document.getElementById("pframe");
+      frame.classList.remove("shake"); void frame.offsetWidth; frame.classList.add("shake");
+      spawnGrains(r, c, ["#6B4226","#8A5A2E","#5C4033"], "bparticle", 9);
+      spawnStink(r, c);
+      setCat("catShock", "踩到自己拉的了！😱 点「重置」再来");
+      return;
+    }
+    reveal(r, c, 0);
+    setTimeout(checkWin, 600);
+  }
+  function toggleMode() {
+    flagMode = !flagMode;
+    const b = document.getElementById("modebtn");
+    b.textContent = flagMode ? "🚩 记号模式" : "🐾 探砂模式";
+    b.classList.toggle("on", !flagMode);
+  }
+  function resetPlay() { ringFired = false; pbInit(); }
+  pbInit();
+
+  /* ── ⑦ 关卡地图 ── */
+  const SP = 95, TOPPAD = 210, BOTPAD = 90, LEVELS = 20, CURRENT = 8; // 当前第8关
+  const MEDALS = [
+    { icon:"iconStep",  color:"#8DC87A", name:"踏砂小猫" },
+    { icon:"iconSniff", color:"#A8D4E6", name:"嗅嗅小猫" },
+    { icon:"iconTip",   color:"#F2A7BB", name:"踮爪小猫" },
+    { icon:"iconDig",   color:"#7FA9BB", name:"刨坑小猫" },
+    { icon:"iconBury",  color:"#8B6355", name:"埋宝小猫" },
+    { icon:"iconKing",  color:"#F2C14E", name:"如厕之王" },
+  ];
+  const SCENES_MAP = [
+    { name:"小号猫砂盆 · 1-4关",  first:1,  color:"#C9986B" },
+    { name:"大号猫砂盆 · 5-8关",  first:5,  color:"#7FA9BB" },
+    { name:"小房间 · 9-12关",     first:9,  color:"#9C7A55" },
+    { name:"公寓 · 13-16关",      first:13, color:"#8A92A4" },
+    { name:"别墅 · 17-20关",      first:17, color:"#C9A227" },
+  ];
+  // 各章节整幅场景道具（手绘像素 + CSS 造型，零 Emoji）
+  function segProps(si, top, h) {
+    const y = f => Math.round(top + h * f);
+    if (si === 0) return `
+      <div class="mprop" style="top:${y(.16)}px;left:8px;opacity:.9" data-sprite="box" data-scale="3"></div>
+      <div class="mound" style="top:${y(.52)}px;right:10px"></div>
+      <div class="mound sm" style="top:${y(.8)}px;left:18px"></div>
+      <div class="mprop" style="top:${y(.38)}px;right:44px;opacity:.35" data-sprite="sprPaw" data-scale="3"></div>
+      <div class="mprop" style="top:${y(.66)}px;left:56px;opacity:.25" data-sprite="sprPaw" data-scale="3"></div>`;
+    if (si === 1) return `
+      <div class="mapdome" style="top:${y(.18)}px;right:8px"><div class="dm"></div><div class="tr"></div></div>
+      <div class="mprop" style="top:${y(.52)}px;left:10px;opacity:.35" data-sprite="sprPaw" data-scale="3"></div>
+      <div class="mprop" style="top:${y(.76)}px;left:26px;opacity:.9" data-sprite="poop" data-scale="3"></div>`;
+    if (si === 2) return `
+      <div class="swin" style="top:${y(.14)}px;left:12px;z-index:2"><div class="scloud"></div></div>
+      <div class="maprug" style="top:${y(.48)}px;right:8px"></div>
+      <div class="mprop" style="top:${y(.74)}px;left:18px" data-sprite="sprYarn" data-scale="3"></div>`;
+    if (si === 3) return `
+      <div class="mapwins" style="top:${y(.14)}px;left:14px"><i></i><i class="off"></i><i></i></div>
+      <div class="mprop" style="top:${y(.48)}px;right:12px" data-sprite="sprPlant" data-scale="3"></div>
+      <div class="mapwins" style="top:${y(.76)}px;right:14px"><i class="off"></i><i></i></div>`;
+    return `
+      <div class="mprop" style="top:${y(.5)}px;left:8px" data-sprite="sprTree" data-scale="3"></div>
+      <div class="mprop" style="top:${y(.7)}px;right:8px" data-sprite="sprTree" data-scale="3"></div>
+      <span class="sparkpx" style="top:${y(.45)}px;right:58px"></span>
+      <span class="sparkpx" style="top:${y(.78)}px;left:52px;animation-delay:.6s"></span>
+      <div class="maphedge" style="top:${y(.92)}px"></div>`;
+  }
+  const totalH = TOPPAD + (LEVELS-1)*SP + BOTPAD + 60;
+  const nodeX = i => 165 + Math.sin(i * 0.95) * 72;
+  const nodeY = i => TOPPAD + (LEVELS-1-i) * SP + 40;
+  const miniMedal = (mi, scale) =>
+    `<span class="minimedal" data-icon="${MEDALS[mi].icon}" data-scale="${scale||1}" style="--mc:${MEDALS[mi].color}"></span>`;
+  const inner = document.getElementById("mapinner");
+  inner.style.height = totalH + "px";
+  let html = "";
+  // 章节底色分段
+  const bounds = SCENES_MAP.map(s => s.first === 1 ? totalH : nodeY(s.first-1) + (nodeY(s.first-2)-nodeY(s.first-1))/2 + 28);
+  SCENES_MAP.forEach((s, si) => {
+    const bottom = bounds[si];
+    const top = si === SCENES_MAP.length-1 ? 0 : bounds[si+1];
+    html += `<div class="seg sg${si+1}" style="top:${top}px;height:${bottom-top}px"></div>`;
+    html += segProps(si, top, bottom - top);
+  });
+  // 顶部 Key Art 天空：太阳 + 云朵 + 双层草丘 + 山顶城堡
+  html += `<div class="mapsky"></div>
+    <div class="maphill" style="top:128px;left:-70px"></div>
+    <div class="maphill" style="top:142px;left:110px;background:#9ECB81"></div>
+    <div class="mapsun"></div>
+    <div class="cloud c1" style="top:36px;left:18px;z-index:1"></div>
+    <div class="cloud c2" style="top:78px;right:36px;z-index:1"></div>`;
+  // 爪印连接线（SVG 两段：已完成绿色 / 未完成沙色）
+  const ptsAll = [], ptsDone = [];
+  for (let i = 0; i < LEVELS; i++) {
+    ptsAll.push(`${nodeX(i)},${nodeY(i)}`);
+    if (i <= CURRENT-1) ptsDone.push(`${nodeX(i)},${nodeY(i)}`);
+  }
+  html += `<svg width="330" height="${totalH}" style="position:absolute;top:0;left:0;z-index:1">
+    <polyline points="${ptsAll.join(" ")}" fill="none" stroke="#C9B49A" stroke-width="5" stroke-dasharray="1 12" stroke-linecap="round"/>
+    <polyline points="${ptsDone.join(" ")}" fill="none" stroke="#8DC87A" stroke-width="5" stroke-dasharray="1 12" stroke-linecap="round"/>
+  </svg>`;
+  // 章节横幅（带对应等级勋章图标）
+  SCENES_MAP.forEach((s, si) => {
+    const i = s.first - 1;
+    const y = s.first === 1 ? nodeY(0) + 58 : (nodeY(i) + nodeY(i-1)) / 2 - 12;
+    html += `<div class="chapter" style="top:${y}px;background:${s.color}">${miniMedal(si)}${s.name}</div>`;
+  });
+  // 终点（像素别墅，替代 Emoji）& 起点
+  html += `<div class="goal" style="top:96px" data-sprite="sprVilla" data-scale="3"></div>`;
+  html += `<div class="startmat" style="top:${nodeY(0)+86}px">🐾 出发！</div>`;
+  // 关卡节点（场景末关挂「通关即颁发」的勋章角标）
+  for (let i = 0; i < LEVELS; i++) {
+    const lv = i + 1;
+    const x = nodeX(i) - 28, y = nodeY(i) - 28;
+    const badge = lv % 4 === 0 ? `<span class="nodebadge">${miniMedal(lv/4)}</span>` : "";
+    if (lv < CURRENT) {
+      const stars = "⭐".repeat(1 + (lv % 3));
+      html += `<button class="lnode done" style="left:${x}px;top:${y}px">✓${badge}<span class="stars">${stars}</span></button>`;
+    } else if (lv === CURRENT) {
+      html += `<button class="lnode cur" style="left:${x}px;top:${y}px">${lv}${badge}</button>`;
+    } else {
+      html += `<button class="lnode lock" style="left:${x}px;top:${y}px" data-lock="1">🔒${badge}</button>`;
+    }
+  }
+  inner.innerHTML = html;
+  renderAll(inner);
+  renderAll(document.querySelector(".phone .topbar"));
+  // 锁定节点抖动 + toast
+  inner.querySelectorAll("[data-lock]").forEach(n => {
+    n.onclick = () => {
+      n.classList.remove("shakeno"); void n.offsetWidth; n.classList.add("shakeno");
+      const t = document.createElement("div");
+      t.className = "maptoast";
+      t.textContent = "还没到这里哦 🐾 先通过前面的关卡";
+      t.style.left = Math.min(parseInt(n.style.left), 130) + "px";
+      t.style.top = (parseInt(n.style.top) - 34) + "px";
+      inner.appendChild(t);
+      setTimeout(() => t.remove(), 1500);
+    };
+  });
+  // 自动滚动到当前关（位于可视区中部偏下）
+  const scroller = document.getElementById("mapscroll");
+  scroller.scrollTop = nodeY(CURRENT-1) - 330;
+</script>
+</body>
+</html>

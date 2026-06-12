@@ -1,0 +1,5 @@
+﻿<html><body style="font:14px monospace;padding:10px"><div id="r">testing...</div><script>
+const files=["meow-enter","meow-cascade","purr-milestone","meow-whine","meow-rankup","meow-retry","meow-shock"];
+const ctx=new (window.AudioContext||window.webkitAudioContext)();
+Promise.all(files.map(f=>fetch("/sounds/"+f+".mp3").then(r=>r.arrayBuffer()).then(ab=>ctx.decodeAudioData(ab)).then(b=>f+": OK "+b.duration.toFixed(2)+"s "+b.sampleRate+"Hz").catch(e=>f+": FAIL "+e))).then(rs=>{document.getElementById("r").innerHTML=rs.join("<br>");});
+</script></body></html>
